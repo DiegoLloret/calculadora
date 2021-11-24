@@ -12,70 +12,96 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author Admin
  */
-public class Diego_laCalculadoraHumana {
+public class Diego_laCalculadoraHumana extends Thread {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+   @Override
+    public void run(){
+        System.out.println("Empieza el concurso");
+        Operaciones();
+    }
         // TODO code application logic here
+    public  void Operaciones() {
         int num1 = 1;
-        int num2 = 2;
-        int num3 = 4;
+        int num2 = 50;
+        int num3 = 5;
         Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < 8; ) {
+        for (int i = 0; i < 8;) {
             int solucion = 0;
             int operacion = 0;
             int numeroRandom = (int) Math.floor(Math.random() * (num1 - num2) + num2);
             int numero = (int) Math.floor(Math.random() * (num1 - num3) + num3);
             int numeroRandom1 = (int) Math.floor(Math.random() * (num1 - num2) + num2);
             System.out.println("resuelve las siguientes operaciones:");
-System.out.println(numero);
+           
             if (numero == 1) {
-                operacion = numeroRandom + numeroRandom1;
-                System.out.println(numeroRandom + "+" + numeroRandom1);
-                solucion = sc.nextInt();
-                if (operacion == solucion) {
-                    i++;
+                int res = 0;
+                while (res == 0) {
+                    operacion = numeroRandom + numeroRandom1;
+                    System.out.println(numeroRandom + "+" + numeroRandom1);
+                    solucion = sc.nextInt();
+                    if (operacion == solucion) {
+                        i++;
+                        res++;
+                    }
                 }
             }
             if (numero == 2) {
-                operacion = numeroRandom * numeroRandom1;
-                System.out.println(numeroRandom + "x" + numeroRandom1);
-                solucion = sc.nextInt();
-                if (operacion == solucion) {
-                    i++;
+                int res = 0;
+                while (res == 0) {
+                    operacion = numeroRandom * numeroRandom1;
+                    System.out.println(numeroRandom + "x" + numeroRandom1);
+                    solucion = sc.nextInt();
+                    if (operacion == solucion) {
+                        i++;
+                        res++;
+                    }
                 }
             }
             if (numero == 3) {
-                if(numeroRandom1>numeroRandom){
-                     operacion = numeroRandom1 - numeroRandom;
-                System.out.println(numeroRandom1 + "-" + numeroRandom);
-                solucion = sc.nextInt();
-                }else{
-                operacion = numeroRandom - numeroRandom1;
-                System.out.println(numeroRandom + "-" + numeroRandom1);
-                solucion = sc.nextInt();
+                int res = 0;
+                while (res == 0) {
+                    if (numeroRandom1 > numeroRandom) {
+                        operacion = numeroRandom1 - numeroRandom;
+                        System.out.println(numeroRandom1 + "-" + numeroRandom);
+                        solucion = sc.nextInt();
+                    } else {
+                        operacion = numeroRandom - numeroRandom1;
+                        System.out.println(numeroRandom + "-" + numeroRandom1);
+                        solucion = sc.nextInt();
+                    }
+                    if (operacion == solucion) {
+                        i++;
+                        res++;
+                    }
                 }
-                if (operacion == solucion) {
-                    i++;
-                }
-            }/*
+            }
             if (numero == 4) {
-                if(numeroRandom1%numeroRandom==0){
-                     operacion = numeroRandom1 / numeroRandom;
-                System.out.println(numeroRandom + "/" + numeroRandom1);
-                solucion = sc.nextInt();
-                }else{
-                
-                }
-                if (operacion == solucion) {
+                int rep = 0;
+                int res = 0;
+                while (rep == 0) {
+                    numeroRandom = (int) Math.floor(Math.random() * (num1 - num2) + num2);
+                    numeroRandom1 = (int) Math.floor(Math.random() * (num1 - num2) + num2);
 
-                }
+                    if (numeroRandom1 % numeroRandom == 0) {
+                        while (res == 0) {
+                            operacion = numeroRandom1 / numeroRandom;
+                            System.out.println(numeroRandom1 + "/" + numeroRandom);
+                            solucion = sc.nextInt();
 
-            }*/
+                            if (operacion == solucion) {
+                                i++;
+                                res++;
+                                rep++;
+
+                            }
+                        }
+                    }
+                }
+            }
 
         }
-
     }
 }
